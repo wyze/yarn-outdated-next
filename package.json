@@ -25,6 +25,9 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "ava": {
     "babel": "inherit",
     "require": [
