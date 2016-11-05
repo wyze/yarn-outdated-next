@@ -1,0 +1,71 @@
+{
+  "name": "@wyze/yarn-outdated-next",
+  "version": "0.0.0",
+  "description": "Testing `yarn outdated` command with next tag.",
+  "license": "MIT",
+  "repository": "wyze/yarn-outdated-next",
+  "author": {
+    "name": "Neil Kistner",
+    "email": "neil.kistner@gmail.com",
+    "url": "neilkistner.com"
+  },
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "clean": "rimraf .nyc_output coverage lib",
+    "codecov": "nyc report -r text-lcov | codecov",
+    "lint": "eslint src test",
+    "prebuild": "npm run clean && npm run test",
+    "pretest": "npm run lint",
+    "preversion": "npm run build",
+    "test": "nyc npm run test:only",
+    "test:only": "ava",
+    "test:watch": "npm run test:only -- --watch"
+  },
+  "main": "lib/index",
+  "files": [
+    "lib"
+  ],
+  "ava": {
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "wyze/base"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/*.js"
+    ],
+    "exclude": [
+      "lib/**",
+      "node_modules/**"
+    ],
+    "require": [
+      "babel-register"
+    ]
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "codecov": "^1.0.1",
+    "eslint": "^3.9.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-config-wyze": "^3.0.0",
+    "eslint-plugin-import": "^2.1.0",
+    "eslint-plugin-wyze": "^2.0.0",
+    "nyc": "^8.4.0",
+    "rimraf": "^2.5.4"
+  }
+}
