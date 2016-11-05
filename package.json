@@ -1,6 +1,6 @@
 {
   "name": "@wyze/yarn-outdated-next",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Testing `yarn outdated` command with next tag.",
   "license": "MIT",
   "repository": "wyze/yarn-outdated-next",
